@@ -40,14 +40,14 @@ const linking: LinkingOptions<RootStackParamList> = {
               DownloadsScreen: "five",
             },
           },
-          TabOne: {
+          MoviesScreen: {
             screens: {
-              TabOneScreen: "six",
+              MoviesScreen: "six",
             },
           },
-          TabTwo: {
+          TVShowsScreen: {
             screens: {
-              TabTwoScreen: "seven",
+              TVShowsScreen: "seven",
             },
           },
         },

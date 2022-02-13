@@ -71,11 +71,11 @@ const Recommended = [
   { id: "rec7", showUrl: sT },
 ];
 
-const genres = ["Fantasy Movie", "Drama", "Art House"];
+const genres = ["Omnious", "Scary", "Suspenseful", "Chilling"];
 
-export default function MoviesScreen({
+export default function TVShowsScreen({
   navigation,
-}: RootTabScreenProps<"MoviesScreen">) {
+}: RootTabScreenProps<"TVShowsScreen">) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroller}>
@@ -88,7 +88,7 @@ export default function MoviesScreen({
             >
               <View style={styles.catBtn}>
                 <Text style={styles.catText}>
-                  Movies{" "}
+                  TV Shows{" "}
                   <Icon
                     type="feather"
                     color={"white"}
@@ -161,10 +161,7 @@ export default function MoviesScreen({
           </View>
 
           <View style={styles.thumbFrame}>
-            <ShowGrid
-              title={"Top 10 Movies in Turkey Today"}
-              showList={TVshows}
-            />
+            <ShowGrid title={"Top 10 TV Shows in Turkey"} showList={TVshows} />
             <ShowGrid title={"Popular On Netflix"} showList={MyList} />
             <ShowGrid title={"Trending Now"} showList={TrendingNow} />
             <ShowGrid title={"Recommended"} showList={Recommended} />

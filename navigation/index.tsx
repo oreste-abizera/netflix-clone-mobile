@@ -25,7 +25,6 @@ import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/GamesScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -39,6 +38,8 @@ import GamesScreen from "../screens/GamesScreen";
 import ComingSoonScreen from "../screens/ComingSoonScreen";
 import FastLaughsScreen from "../screens/FastLaughsScreen";
 import DownloadsScreen from "../screens/DownloadsScreen";
+import TVShowsScreen from "../screens/TVShowsScreen";
+import MoviesScreen from "../screens/MoviesScreen";
 
 export default function Navigation({
   colorScheme,
@@ -92,7 +93,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="TVShowsScreen"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
@@ -174,6 +175,86 @@ function BottomTabNavigator() {
             <TabBarIcon name="download" color={color} />
           ),
         }}
+      />
+      <BottomTab.Screen
+        name="MoviesScreen"
+        component={MoviesScreen}
+        options={({ navigation }: RootTabScreenProps<"MoviesScreen">) => ({
+          title: "Movies",
+          tabBarItemStyle: { display: "none" },
+          headerRight: () => (
+            <View
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+              }}
+            >
+              <FontAwesome
+                name="search"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginRight: 20 }}
+              />
+              <Image
+                source={netflixRightIcon}
+                style={{ width: 30, height: 30, marginHorizontal: 10 }}
+              />
+            </View>
+          ),
+          headerLeft: () => (
+            <View>
+              <FontAwesome
+                name="arrow-left"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginLeft: 10 }}
+                onPress={() => navigation.canGoBack() && navigation.goBack()}
+              />
+            </View>
+          ),
+        })}
+      />
+      <BottomTab.Screen
+        name="TVShowsScreen"
+        component={TVShowsScreen}
+        options={({ navigation }: RootTabScreenProps<"TVShowsScreen">) => ({
+          title: "TV Shows",
+          tabBarItemStyle: { display: "none" },
+          headerRight: () => (
+            <View
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+              }}
+            >
+              <FontAwesome
+                name="search"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginRight: 20 }}
+              />
+              <Image
+                source={netflixRightIcon}
+                style={{ width: 30, height: 30, marginHorizontal: 10 }}
+              />
+            </View>
+          ),
+          headerLeft: () => (
+            <View>
+              <FontAwesome
+                name="arrow-left"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginLeft: 10 }}
+                onPress={() => navigation.canGoBack() && navigation.goBack()}
+              />
+            </View>
+          ),
+        })}
       />
     </BottomTab.Navigator>
   );
