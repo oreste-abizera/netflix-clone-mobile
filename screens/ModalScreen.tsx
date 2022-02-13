@@ -15,7 +15,7 @@ export default function ModalScreen({ navigation, route }: any) {
       <View style={styles.routes}>
         {routes.map((r) => {
           return (
-            <View style={styles.route}>
+            <View style={styles.route} key={r.label}>
               <Text
                 style={[
                   styles.routeText,

@@ -10,7 +10,7 @@ export default function GamesScreen({
 }: RootTabScreenProps<"GamesScreen">) {
   return (
     <Animatable.View animation="fadeInLeft" style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Games</Text>
       <View
         style={styles.separator}
         lightColor="#eee"

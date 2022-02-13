@@ -17,6 +17,7 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Text,
   View,
 } from "react-native";
 
@@ -155,7 +156,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => (
             <View style={{ position: "relative" }}>
               <TabBarIcon name="video-camera" color={color} />
-              <View style={styles.badge}>4</View>
+              <Text style={styles.badge}>4</Text>
             </View>
           ),
         }}

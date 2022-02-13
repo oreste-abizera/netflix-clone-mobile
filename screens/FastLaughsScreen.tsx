@@ -10,7 +10,7 @@ export default function FastLaughsScreen({
 }: RootTabScreenProps<"FastLaughsScreen">) {
   return (
     <Animatable.View animation="fadeInLeft" style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Fast Laughs</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
