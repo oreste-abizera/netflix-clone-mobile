@@ -1,18 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { Platform, StyleSheet } from "react-native";
+import { Text, View } from "../components/Themed";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+export default function ModalScreen({ navigation, route }: any) {
+  const routes = [
+    { label: "Home", url: "HomeScreen" },
+    { label: "TV Shows", url: "TVShowsScreen", active: true },
+    { label: "Movies", url: "MoviesScreen" },
+  ];
 
-export default function ModalScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ModalScreen.tsx" />
+      <View style={styles.routes}>
+        {routes.map((r) => {
+          return (
+            <View style={styles.route}>
+              <Text
+                style={[
+                  styles.routeText,
+                  r.active ? styles.routeTextActive : {},
+                ]}
+                onPress={() => navigation.navigate("Root", { screen: r.url })}
+              >
+                {r.label}
+              </Text>
+            </View>
+          );
+        })}
+      </View>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
     </View>
   );
 }
@@ -20,16 +38,19 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  title: {
+  routes: {},
+  route: {
+    marginVertical: 10,
+  },
+  routeText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    textAlign: "center",
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  routeTextActive: {
+    fontWeight: "bold",
+    fontSize: 24,
   },
 });

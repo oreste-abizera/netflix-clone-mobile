@@ -76,7 +76,11 @@ function RootNavigator() {
         options={{ title: "Oops!" }}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen
+          name="Modal"
+          component={ModalScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -93,7 +97,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TVShowsScreen"
+      initialRouteName="HomeScreen"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
