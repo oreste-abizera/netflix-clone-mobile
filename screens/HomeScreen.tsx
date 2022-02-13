@@ -88,9 +88,22 @@ export default function HomeScreen({
               style={styles.header}
             >
               <View style={styles.catBtn}>
-                <Text style={styles.catText}>TV Shows</Text>
-                <Text style={styles.catText}>Movies</Text>
-                <Text style={styles.catText}>
+                <Text
+                  style={styles.catText}
+                  onPress={() => navigation.navigate("TVShowsScreen")}
+                >
+                  TV Shows
+                </Text>
+                <Text
+                  style={styles.catText}
+                  onPress={() => navigation.navigate("MoviesScreen")}
+                >
+                  Movies
+                </Text>
+                <Text
+                  style={styles.catText}
+                  onPress={() => navigation.navigate("Modal")}
+                >
                   Categories{" "}
                   <Icon
                     type="feather"

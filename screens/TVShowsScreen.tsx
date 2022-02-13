@@ -87,7 +87,10 @@ export default function TVShowsScreen({
               style={styles.header}
             >
               <View style={styles.catBtn}>
-                <Text style={styles.catText}>
+                <Text
+                  style={styles.catText}
+                  onPress={() => navigation.navigate("Modal")}
+                >
                   TV Shows{" "}
                   <Icon
                     type="feather"
@@ -97,7 +100,10 @@ export default function TVShowsScreen({
                     tvParallaxProperties={undefined}
                   ></Icon>
                 </Text>
-                <Text style={styles.catText}>
+                <Text
+                  style={styles.catText}
+                  onPress={() => navigation.navigate("Modal")}
+                >
                   All Categories{" "}
                   <Icon
                     type="feather"
