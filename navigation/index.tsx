@@ -12,15 +12,20 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Image, Pressable, View } from "react-native";
+import {
+  ColorSchemeName,
+  Image,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import TabOneScreen from "../screens/GamesScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -30,6 +35,10 @@ import LinkingConfiguration from "./LinkingConfiguration";
 
 import logo from "../assets/images/netflixN.png";
 import netflixRightIcon from "../assets/images/netflixRight.png";
+import GamesScreen from "../screens/GamesScreen";
+import ComingSoonScreen from "../screens/ComingSoonScreen";
+import FastLaughsScreen from "../screens/FastLaughsScreen";
+import DownloadsScreen from "../screens/DownloadsScreen";
 
 export default function Navigation({
   colorScheme,
@@ -124,34 +133,46 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
+        name="GamesScreen"
+        component={GamesScreen}
+        options={{
+          title: "Games",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="gamepad" color={color} />
           ),
-        })}
+        }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="ComingSoonScreen"
+        component={ComingSoonScreen}
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Coming Soon",
+          tabBarIcon: ({ color }) => (
+            <View style={{ position: "relative" }}>
+              <TabBarIcon name="video-camera" color={color} />
+              <View style={styles.badge}>4</View>
+            </View>
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="FastLaughsScreen"
+        component={FastLaughsScreen}
+        options={{
+          title: "Fast Laughs",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="smile-o" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="DownloadsScreen"
+        component={DownloadsScreen}
+        options={{
+          title: "Downloads",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="download" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -165,5 +186,19 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={20} style={{ marginBottom: -10 }} {...props} />;
 }
+
+const styles = StyleSheet.create({
+  badge: {
+    position: "absolute",
+    top: -10,
+    right: -10,
+    backgroundColor: "red",
+    color: "#fff",
+    height: 20,
+    width: 20,
+    borderRadius: 50,
+    textAlign: "center",
+  },
+});
