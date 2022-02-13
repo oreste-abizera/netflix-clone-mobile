@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
+import * as Animatable from "react-native-animatable";
 
 export default function ModalScreen({ navigation, route }: any) {
   const routes = [
@@ -10,7 +11,7 @@ export default function ModalScreen({ navigation, route }: any) {
   ];
 
   return (
-    <View style={styles.container}>
+    <Animatable.View animation="fadeInLeft" style={styles.container}>
       <View style={styles.routes}>
         {routes.map((r) => {
           return (
@@ -31,7 +32,7 @@ export default function ModalScreen({ navigation, route }: any) {
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-    </View>
+    </Animatable.View>
   );
 }
 

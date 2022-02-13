@@ -1,6 +1,7 @@
 import { StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
+import * as Animatable from "react-native-animatable";
 
 import { Icon } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
@@ -77,7 +78,7 @@ export default function TVShowsScreen({
   navigation,
 }: RootTabScreenProps<"TVShowsScreen">) {
   return (
-    <View style={styles.container}>
+    <Animatable.View animation="fadeInLeft" style={styles.container}>
       <ScrollView style={styles.scroller}>
         <View style={styles.scrollWrapper}>
           <View style={styles.bigFrame}>
@@ -176,7 +177,7 @@ export default function TVShowsScreen({
       </ScrollView>
 
       <StatusBar style="auto" />
-    </View>
+    </Animatable.View>
   );
 }
 
