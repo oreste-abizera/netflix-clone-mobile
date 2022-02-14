@@ -27,6 +27,8 @@ import pnS from "../assets/images/thumbs/punisher.jpg";
 import rM from "../assets/images/thumbs/rickMorty.jpg";
 import sT from "../assets/images/thumbs/strangerThings.jpg";
 import suits from "../assets/images/thumbs/suits.jpeg";
+import LoadingThumbnails from "../components/LoadingThumbnails";
+import { useEffect, useState } from "react";
 
 const TVshows = [
   { id: "tv1", showUrl: bB },
@@ -77,107 +79,121 @@ const genres = ["Omnious", "Scary", "Suspenseful", "Chilling"];
 export default function TVShowsScreen({
   navigation,
 }: RootTabScreenProps<"TVShowsScreen">) {
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // mocked load data from backend finish
+      setloading(false);
+    }, 1000);
+  }, []);
+
   return (
-    <Animatable.View animation="fadeInLeft" style={styles.container}>
-      <ScrollView style={styles.scroller}>
-        <View style={styles.scrollWrapper}>
-          <View style={styles.bigFrame}>
-            <Image source={banner} style={styles.bannerPic} />
-            <LinearGradient
-              colors={["black", "transparent"]}
-              style={styles.header}
-            >
-              <View style={styles.catBtn}>
-                <Text
-                  style={styles.catText}
-                  onPress={() => navigation.navigate("Modal")}
-                >
-                  TV Shows{" "}
-                  <Icon
-                    type="feather"
-                    color={"white"}
-                    size={25}
-                    name={"chevron-down"}
-                    tvParallaxProperties={undefined}
-                  ></Icon>
-                </Text>
-                <Text
-                  style={styles.catText}
-                  onPress={() => navigation.navigate("Modal")}
-                >
-                  All Categories{" "}
-                  <Icon
-                    type="feather"
-                    color={"white"}
-                    size={25}
-                    name={"chevron-down"}
-                    tvParallaxProperties={undefined}
-                  ></Icon>
-                </Text>
-              </View>
-            </LinearGradient>
+    <LoadingThumbnails loading={loading}>
+      <Animatable.View animation="fadeInLeft" style={styles.container}>
+        <ScrollView style={styles.scroller}>
+          <View style={styles.scrollWrapper}>
+            <View style={styles.bigFrame}>
+              <Image source={banner} style={styles.bannerPic} />
+              <LinearGradient
+                colors={["black", "transparent"]}
+                style={styles.header}
+              >
+                <View style={styles.catBtn}>
+                  <Text
+                    style={styles.catText}
+                    onPress={() => navigation.navigate("Modal")}
+                  >
+                    TV Shows{" "}
+                    <Icon
+                      type="feather"
+                      color={"white"}
+                      size={25}
+                      name={"chevron-down"}
+                      tvParallaxProperties={undefined}
+                    ></Icon>
+                  </Text>
+                  <Text
+                    style={styles.catText}
+                    onPress={() => navigation.navigate("Modal")}
+                  >
+                    All Categories{" "}
+                    <Icon
+                      type="feather"
+                      color={"white"}
+                      size={25}
+                      name={"chevron-down"}
+                      tvParallaxProperties={undefined}
+                    ></Icon>
+                  </Text>
+                </View>
+              </LinearGradient>
 
-            <LinearGradient
-              colors={["transparent", "#0008", "black"]}
-              style={styles.bannerPlay}
-            >
-              <View style={styles.gener}>
-                {genres.map((genre) => {
-                  return (
-                    <Text key={genre} style={styles.genreText}>
-                      {genre}
-                    </Text>
-                  );
-                })}
-              </View>
-              <View style={styles.BannerBox}>
-                <TouchableOpacity style={styles.bannerBtnSide}>
-                  <Icon
-                    type="ant-design"
-                    color={"white"}
-                    size={25}
-                    name={"plus"}
-                    tvParallaxProperties={undefined}
-                  />
-                  <Text style={styles.sideBtnText}>My List</Text>
-                </TouchableOpacity>
+              <LinearGradient
+                colors={["transparent", "#0008", "black"]}
+                style={styles.bannerPlay}
+              >
+                <View style={styles.gener}>
+                  {genres.map((genre) => {
+                    return (
+                      <Text key={genre} style={styles.genreText}>
+                        {genre}
+                      </Text>
+                    );
+                  })}
+                </View>
+                <View style={styles.BannerBox}>
+                  <TouchableOpacity style={styles.bannerBtnSide}>
+                    <Icon
+                      type="ant-design"
+                      color={"white"}
+                      size={25}
+                      name={"plus"}
+                      tvParallaxProperties={undefined}
+                    />
+                    <Text style={styles.sideBtnText}>My List</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity style={styles.showPlay}>
-                  <Icon
-                    type="entypo"
-                    color={"black"}
-                    size={35}
-                    name={"controller-play"}
-                    tvParallaxProperties={undefined}
-                  />
-                  <Text style={styles.playBtn}>Play</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity style={styles.showPlay}>
+                    <Icon
+                      type="entypo"
+                      color={"black"}
+                      size={35}
+                      name={"controller-play"}
+                      tvParallaxProperties={undefined}
+                    />
+                    <Text style={styles.playBtn}>Play</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity style={styles.bannerBtnSide}>
-                  <Icon
-                    type="feather"
-                    color={"white"}
-                    size={25}
-                    name={"info"}
-                    tvParallaxProperties={undefined}
-                  />
-                  <Text style={styles.sideBtnText}>Info</Text>
-                </TouchableOpacity>
-              </View>
-            </LinearGradient>
+                  <TouchableOpacity style={styles.bannerBtnSide}>
+                    <Icon
+                      type="feather"
+                      color={"white"}
+                      size={25}
+                      name={"info"}
+                      tvParallaxProperties={undefined}
+                    />
+                    <Text style={styles.sideBtnText}>Info</Text>
+                  </TouchableOpacity>
+                </View>
+              </LinearGradient>
+            </View>
+
+            <View style={styles.thumbFrame}>
+              <ShowGrid
+                title={"Top 10 TV Shows in Turkey"}
+                showList={TVshows}
+              />
+              <ShowGrid title={"Popular On Netflix"} showList={MyList} />
+              <ShowGrid title={"Trending Now"} showList={TrendingNow} />
+              <ShowGrid title={"Recommended"} showList={Recommended} />
+            </View>
           </View>
+        </ScrollView>
 
-          <View style={styles.thumbFrame}>
-            <ShowGrid title={"Top 10 TV Shows in Turkey"} showList={TVshows} />
-            <ShowGrid title={"Popular On Netflix"} showList={MyList} />
-            <ShowGrid title={"Trending Now"} showList={TrendingNow} />
-            <ShowGrid title={"Recommended"} showList={Recommended} />
-          </View>
-        </View>
-      </ScrollView>
-
-      <StatusBar style="auto" />
-    </Animatable.View>
+        <StatusBar style="auto" />
+      </Animatable.View>
+    </LoadingThumbnails>
   );
 }
 
