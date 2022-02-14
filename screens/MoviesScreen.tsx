@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     display: "flex",
     flexDirection: "row",
-    gap: 4,
+    // gap: 4,
   },
 
   bannerPlay: {
