@@ -85,12 +85,12 @@ export default function TVShowsScreen({
     setTimeout(() => {
       // mocked load data from backend finish
       setloading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   return (
     <LoadingThumbnails loading={loading}>
-      <Animatable.View animation="fadeInLeft" style={styles.container}>
+      <Animatable.View animation="slideInDown" style={styles.container}>
         <ScrollView style={styles.scroller}>
           <View style={styles.scrollWrapper}>
             <View style={styles.bigFrame}>

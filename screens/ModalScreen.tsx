@@ -11,7 +11,7 @@ export default function ModalScreen({ navigation, route }: any) {
   ];
 
   return (
-    <Animatable.View animation="fadeInLeft" style={styles.container}>
+    <Animatable.View animation="slideInDown" style={styles.container}>
       <View style={styles.routes}>
         {routes.map((r) => {
           return (

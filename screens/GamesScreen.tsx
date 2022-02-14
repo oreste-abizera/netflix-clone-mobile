@@ -9,7 +9,7 @@ export default function GamesScreen({
   navigation,
 }: RootTabScreenProps<"GamesScreen">) {
   return (
-    <Animatable.View animation="fadeInLeft" style={styles.container}>
+    <Animatable.View animation="slideInDown" style={styles.container}>
       <Text style={styles.title}>Games</Text>
       <View
         style={styles.separator}

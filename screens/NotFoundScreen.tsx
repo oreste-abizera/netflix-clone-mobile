@@ -8,7 +8,7 @@ export default function NotFoundScreen({
   navigation,
 }: RootStackScreenProps<"NotFound">) {
   return (
-    <Animatable.View animation="fadeInLeft" style={styles.container}>
+    <Animatable.View animation="slideInDown" style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
       <TouchableOpacity
         onPress={() => navigation.replace("Root")}

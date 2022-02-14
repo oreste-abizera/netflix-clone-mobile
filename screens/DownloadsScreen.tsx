@@ -9,7 +9,7 @@ export default function DownloadsScreen({
   navigation,
 }: RootTabScreenProps<"DownloadsScreen">) {
   return (
-    <Animatable.View animation="fadeInLeft" style={styles.container}>
+    <Animatable.View animation="slideInDown" style={styles.container}>
       <Text style={styles.title}>Downloads</Text>
       <View
         style={styles.separator}
