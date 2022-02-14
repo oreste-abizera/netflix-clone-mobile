@@ -95,7 +95,8 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+  let colorScheme = useColorScheme();
+  colorScheme = "dark";
 
   return (
     <BottomTab.Navigator
